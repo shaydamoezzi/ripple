@@ -72,7 +72,7 @@ body {
     font-size: 18px; /* Adjust slogan font size */
     margin: 10px 0 0 0;
     color: #333; /* Slogan color */
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat';
     
 }
 
@@ -194,4 +194,54 @@ button:hover {
     color: #0077b6;
 }
 
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    color: #333;
+}
+
+#blog-form {
+    margin: 20px 0;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#previous-posts {
+    margin-top: 20px;
+}
+
+#post-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#post-list li {
+    background-color: #fff;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 
