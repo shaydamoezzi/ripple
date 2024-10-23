@@ -7,6 +7,7 @@ body {
     position: relative;
     height: 100vh;
     width: 100vw;
+    font-family: 'Montserrat', sans-serif;
 }
 
 /* Ripple container */
@@ -18,6 +19,16 @@ body {
     height: 100%;
 }
 
+#ripple-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #0077b6;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity 0.5s, transform 0.5s; /* Fade effect and transform */
+}
 /* Ripple effect style */
 .ripple {
     position: absolute;
@@ -53,12 +64,21 @@ body {
     font-size: 48px; /* Adjust title font size */
     margin: 0;
     color: #0077b6; /* Title color */
+    font-family: 'Montserrat', sans-serif;
 }
 
 .slogan {
     font-size: 18px; /* Adjust slogan font size */
-    margin: 5px 0 0 0;
+    margin: 10px 0 0 0;
     color: #333; /* Slogan color */
+    
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(4); /* Increase scale */
+        opacity: 0; /* Fade out */
+    }
 }
 
 footer {
@@ -68,3 +88,108 @@ footer {
     width: 100%;
     color: #333;
 }
+
+.blog-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+h1 {
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #0077b6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #005f8a;
+}
+
+.back-button {
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+    text-decoration: none;
+    color: #0077b6;
+}
+
+
+.blog-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.blog-post {
+    margin-bottom: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #0077b6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #005f8a;
+}
+
+.back-button {
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+    text-decoration: none;
+    color: #0077b6;
+}
+
+
