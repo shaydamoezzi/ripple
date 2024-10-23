@@ -9,7 +9,7 @@
 </head>
 <body>
     <h1>Ripple</h1>
-    <h2>Our ideas flowing and growing</h2>
+    <h2>Our thoughts: flowing and growing like ripples</h2>
 
     <button id="ripple-button">Start a Ripple</button>
 
@@ -45,6 +45,8 @@
         const app = initializeApp(firebaseConfig);
         const database = getDatabase(app);
 
+        let editingPostId = null; // Store the ID of the post being edited
+
         // Show the blog form when the ripple button is clicked
         document.getElementById('ripple-button').addEventListener('click', function() {
             document.getElementById('blog-form').style.display = 'block';
@@ -58,22 +60,38 @@
 
             const postContent = document.getElementById('post-content').value;
 
-            // Create a reference for the new post
-            const postRef = ref(database, 'posts/' + new Date().getTime());
+            if (editingPostId) {
+                // Update existing post
+                const postRef = ref(database, 'posts/' + editingPostId);
+                set(postRef, {
+                    content: postContent,
+                    createdAt: new Date().toISOString()
+                })
+                .then(() => {
+                    console.log('Post updated successfully!');
+                    editingPostId = null; // Reset editing ID
+                })
+                .catch((error) => {
+                    console.error('Error updating post:', error);
+                });
+            } else {
+                // Create a new post
+                const postRef = ref(database, 'posts/' + new Date().getTime());
+                set(postRef, {
+                    content: postContent,
+                    createdAt: new Date().toISOString()
+                })
+                .then(() => {
+                    console.log('Post saved successfully!');
+                })
+                .catch((error) => {
+                    console.error('Error saving post:', error);
+                });
+            }
 
-            // Save the post to the database
-            set(postRef, {
-                content: postContent,
-                createdAt: new Date().toISOString()
-            })
-            .then(() => {
-                console.log('Post saved successfully!');
-                document.getElementById('post-content').value = ''; // Clear the textarea
-                loadPosts(); // Reload posts
-            })
-            .catch((error) => {
-                console.error('Error saving post:', error);
-            });
+            // Clear the textarea and reload posts
+            document.getElementById('post-content').value = '';
+            loadPosts(); // Reload posts
         });
 
         // Load previous blog posts from Firebase
@@ -84,11 +102,27 @@
                 postsList.innerHTML = ''; // Clear existing posts
                 snapshot.forEach((childSnapshot) => {
                     const post = childSnapshot.val();
+                    const postId = childSnapshot.key; // Get post ID
                     const li = document.createElement('li');
+                    
+                    // Make the list item clickable
                     li.textContent = post.content;
+                    li.style.cursor = 'pointer'; // Indicate that it's clickable
+                    li.addEventListener('click', function() {
+                        editPost(postId, post.content); // Call edit function
+                    });
+
                     postsList.appendChild(li);
                 });
             });
+        }
+
+        // Edit a blog post
+        function editPost(postId, content) {
+            editingPostId = postId; // Set the ID of the post being edited
+            document.getElementById('post-content').value = content; // Populate textarea with current content
+            document.getElementById('blog-form').style.display = 'block'; // Show the form
+            document.getElementById('ripple-button').style.display = 'none'; // Hide ripple button
         }
     </script>
 </body>
