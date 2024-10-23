@@ -39,6 +39,28 @@ body {
     }
 }
 
+/* Title and slogan styles */
+.title-container {
+    position: absolute;
+    top: 20px; /* Distance from the top */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 1; /* Ensures it appears above the ripple container */
+}
+
+.title {
+    font-size: 48px; /* Adjust title font size */
+    margin: 0;
+    color: #0077b6; /* Title color */
+}
+
+.slogan {
+    font-size: 18px; /* Adjust slogan font size */
+    margin: 5px 0 0 0;
+    color: #333; /* Slogan color */
+}
+
 footer {
     position: absolute;
     bottom: 10px;

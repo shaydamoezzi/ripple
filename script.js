@@ -8,14 +8,13 @@ document.addEventListener("DOMContentLoaded", function() {
     function createRipple(x, y) {
         const ripple = document.createElement('div');
         ripple.classList.add('ripple');
-        ripple.style.width = '100px'; // Set the initial size of the ripple
-        ripple.style.height = '100px'; // Set the initial size of the ripple
-        ripple.style.left = `${x - 50}px`; // Center the ripple at mouse x position
-        ripple.style.top = `${y - 50}px`; // Center the ripple at mouse y position
+        ripple.style.width = '30px'; 
+        ripple.style.height = '30px'; 
+        ripple.style.left = `${x - 30}px`; 
+        ripple.style.top = `${y - 30}px`; 
         
         rippleContainer.appendChild(ripple);
 
-        // Remove the ripple element after the animation ends
         ripple.addEventListener('animationend', () => {
             ripple.remove();
         });
