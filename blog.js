@@ -21,6 +21,17 @@ const database = getDatabase(app);
 // Load blogs on page load
 document.addEventListener('DOMContentLoaded', loadBlogs);
 
+function editBlog(id) {
+    const blogsRef = database.ref('blogs').child(id);
+    blogsRef.once('value', (snapshot) => {
+        const blog = snapshot.val();
+        // Populate the form with the existing blog data
+        document.getElementById('title').value = blog.title;
+        document.getElementById('content').value = blog.content;
+        document.getElementById('editIndex').value = id; // Set the index for editing
+    });
+}
+
 // Function to load blogs from Firebase
 function loadBlogs() {
     const blogList = document.getElementById('blog-list');
@@ -78,41 +89,3 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-function loadBlogs() {
-    const blogList = document.getElementById('blog-list');
-    blogList.innerHTML = ''; // Clear current list
-
-    // Fetch blogs from Firebase
-    database.ref('blogs').once('value', (snapshot) => {
-        snapshot.forEach((childSnapshot) => {
-            const blog = childSnapshot.val();
-            const blogPost = document.createElement('div');
-            blogPost.classList.add('blog-post');
-            blogPost.innerHTML = `
-                <h2>${blog.title}</h2>
-                <p>${blog.content}</p>
-                <small>Created: ${blog.created} | Edited: ${blog.edited}</small>
-                <button onclick="editBlog('${childSnapshot.key}')">Edit</button>
-                <button onclick="deleteBlog('${childSnapshot.key}')">Delete</button>
-                <hr>
-            `;
-            blogList.appendChild(blogPost);
-        });
-    });
-}
-
-function deleteBlog(id) {
-    database.ref('blogs').child(id).remove(); // Remove blog from Firebase
-    loadBlogs(); // Refresh the blog list
-}
-
-function editBlog(id) {
-    const blogsRef = database.ref('blogs').child(id);
-    blogsRef.once('value', (snapshot) => {
-        const blog = snapshot.val();
-        // Populate the form with the existing blog data
-        document.getElementById('title').value = blog.title;
-        document.getElementById('content').value = blog.content;
-        document.getElementById('editIndex').value = id; // Set the index for editing
-    });
-}
