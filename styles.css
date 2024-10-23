@@ -57,6 +57,7 @@ body {
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
+    font-family: 'Montserrat', sans-serif;
     z-index: 1; /* Ensures it appears above the ripple container */
 }
 
@@ -64,14 +65,14 @@ body {
     font-size: 48px; /* Adjust title font size */
     margin: 0;
     color: #0077b6; /* Title color */
-    font-family: 'Montserrat';
+    font-family: 'Montserrat', sans-serif;
 }
 
 .slogan {
     font-size: 18px; /* Adjust slogan font size */
     margin: 10px 0 0 0;
     color: #333; /* Slogan color */
-    font-family: 'Montserrat';
+    font-family: 'Montserrat', sans-serif;
     
 }
 
