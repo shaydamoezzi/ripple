@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f8ff;
+    overflow: hidden;
+}
+
+.dot-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 80%;
+    height: 80%;
+    position: relative;
+}
+
+.dot {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #0077b6;
+    margin: 10px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dot:hover {
+    background-color: #00b4d8;
+    animation: ripple 1s ease-out;
+}
+
+/* Ripple effect on hover */
+@keyframes ripple {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 183, 255, 0.6);
+    }
+    100% {
+        box-shadow: 0 0 0 20px rgba(0, 183, 255, 0);
+    }
+}
+
+footer {
+    position: absolute;
+    bottom: 10px;
+    text-align: center;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
